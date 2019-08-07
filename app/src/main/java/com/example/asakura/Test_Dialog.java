@@ -21,7 +21,7 @@ public class Test_Dialog extends AppCompatDialogFragment {
     Button buttonCancel;
 
     //
-    TextView changeText;
+    TextView textViewOrig;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -37,14 +37,9 @@ public class Test_Dialog extends AppCompatDialogFragment {
         buttonSubmit = dialogView.findViewById(R.id.buttonSubmit);
         buttonCancel = dialogView.findViewById(R.id.buttonCancel);
 
-        //
-        changeText = dialogView.findViewById(R.id.response_text);
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        //Create a TextView object for the ORIG text beneath the EditText View
+        textViewOrig = dialogView.findViewById(R.id.responseText);
+
         /*
         This is where I would use the if Statement to change the text color based on the content of the
         EditTextObject...or in this case, editTextInput
@@ -54,7 +49,14 @@ public class Test_Dialog extends AppCompatDialogFragment {
             public void onClick(View view) {
                 String compare = editTextInput.getText().toString();
                 if (compare.equals("black"))// DO SOMETHINGS
-                    buttonSubmit.setText("B");
+                    textViewOrig.setText("B");
+                //dismiss();
+            }
+        });
+
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dismiss();
             }
         });
